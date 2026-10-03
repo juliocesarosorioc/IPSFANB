@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe Completo de Resultados - IPSFANB | Venezuela Renace</title>
+    <style>
+        :root {
+            --primary: #4A0E17; /* Guinda Institucional */
+            --secondary: #3b5998;
+            --accent: #D4AF37;  /* Dorado Venezuela Renace */
+            --success: #27ae60;
+            --warning: #e67e22;
+            --danger: #e74c3c;
+            --bg: #f4f7f6;
+            --card-bg: #ffffff;
+            --text: #2c3e50;
+        }
+
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 0; line-height: 1.6; }
+        
+        .header-bar { 
+            background-color: var(--primary); 
+            color: white; 
+            padding: 20px 40px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 4px solid var(--accent); 
+        }
+        .header-brand-container { display: flex; align-items: center; gap: 20px; }
+        .header-brand-container img { height: 55px; width: auto; background: #fff; padding: 4px; border-radius: 4px; }
+        .header-title h1 { margin: 0; font-size: 1.5em; text-transform: uppercase; letter-spacing: 1px; }
+        .header-title p { margin: 3px 0 0 0; font-size: 0.85em; opacity: 0.9; }
+        .badge-renace { background-color: var(--accent); color: var(--primary); font-weight: bold; padding: 8px 16px; border-radius: 4px; font-size: 0.85em; letter-spacing: 1px; }
+
+        .nav-tabs { display: flex; background: #fff; border-bottom: 1px solid #ddd; padding: 0 40px; overflow-x: auto; sticky: top; top: 0; z-index: 100; }
+        .tab-btn { padding: 15px 20px; border: none; background: none; font-size: 0.95em; font-weight: 600; color: #666; cursor: pointer; border-bottom: 3px solid transparent; transition: 0.3s; white-space: nowrap; }
+        .tab-btn:hover { color: var(--primary); }
+        .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
+        .tab-content { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        .card { background: var(--card-bg); padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 25px; }
+        .card h2 { color: var(--primary); margin-top: 0; font-size: 1.5em; border-bottom: 2px solid #f0f0f0; padding-bottom: 12px; }
+
+        /* EMBEDDED SVG CONTAINER */
+        .svg-wrap { width: 100%; text-align: center; margin: 25px 0; overflow-x: auto; }
+        .svg-wrap svg { max-width: 100%; height: auto; border-radius: 6px; }
+
+        /* FASES STYLING */
+        .fase-box { border-left: 5px solid var(--primary); background: #fdfdfd; padding: 20px 25px; margin-bottom: 20px; border-radius: 0 6px 6px 0; border-top: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee; }
+        .fase-box h3 { margin-top: 0; color: var(--primary); font-size: 1.2em; display: flex; justify-content: space-between; align-items: center; }
+        .fase-box .duracion { font-size: 0.8em; background: #e9ecef; color: #555; padding: 4px 10px; border-radius: 4px; font-weight: bold; }
+        .fase-box ul { margin: 10px 0 0 0; padding-left: 20px; color: #444; }
+        .fase-box li { margin-bottom: 8px; line-height: 1.5; }
+
+        .btn-print { background: var(--primary); color: #fff; border: none; padding: 12px 24px; border-radius: 4px; cursor: pointer; font-weight: bold; float: right; margin-bottom: 20px; }
+        .btn-print:hover { background: #330a10; }
+
+        @media print { .nav-tabs, .btn-print { display: none; } .tab-content { display: block !important; page-break-after: always; } }
+    </style>
+</head>
+<body>
+
+<div class="header-bar">
+    <div class="header-brand-container">
+        <img src="logo_ipsfanb.png" alt="Logo IPSFANB" onerror="this.style.display='none'">
+        <div class="header-title">
+            <h1>IPSFANB | Proyecto Integral de Cultura</h1>
+            <p>Encuesta de Salud Organizacional y Compromiso Estratégico</p>
+        </div>
+    </div>
+    <div class="badge-renace">VENEZUELA RENACE</div>
+</div>
+
+<div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('tab-objeto')">1. Objeto del Proyecto</button>
+    <button class="tab-btn" onclick="switchTab('tab-fases')">2. Fases Detalladas</button>
+    <button class="tab-btn" onclick="switchTab('tab-gantt')">3. Cronograma & Gantt</button>
+    <button class="tab-btn" onclick="switchTab('tab-hitos')">4. Hitos & Criterios</button>
+    <button class="tab-btn" onclick="switchTab('tab-operativas')">5. Métricas Operativas</button>
+    <button class="tab-btn" onclick="switchTab('tab-kpis')">6. Dashboard & KPIs</button>
+    <button class="tab-btn" onclick="switchTab('tab-capas')">7. Capas de Análisis</button>
+    <button class="tab-btn" onclick="switchTab('tab-acciones')">8. Matriz de Acciones</button>
+</div>
+
+<div class="container">
+    <button class="btn-print" onclick="window.print()">🖨️ Exportar / Imprimir Presentación</button>
+    <div style="clear:both;"></div>
+
+    <!-- SECCIÓN 1: OBJETO -->
+    <div id="tab-objeto" class="tab-content active">
+        <div class="card">
+            <h2>Objeto del Proyecto</h2>
+            <p>Evaluar de manera integral, cuantitativa y cualitativa el clima laboral, el liderazgo, la alineación estratégica y la salud ocupacional en el <strong>IPSFANB</strong>, <strong>IPSFANBMIL</strong> e <strong>IPSFA</strong>, identificando fortalezas, cuellos de botella e ineficiencias operativas para implementar un plan de transformación cultural orientado al alto rendimiento bajo la premisa de <em>«Venezuela Renace»</em>.</p>
+            
+            <h3>Objetivos Específicos:</h3>
+            <ul>
+                <li><strong>Cohesión Interna:</strong> Medir el nivel de involucramiento, sentido de pertenencia y trabajo en equipo (Secciones I y VII).</li>
+                <li><strong>Confianza Directiva:</strong> Diagnosticar la percepción de liderazgo directivo, la coherencia institucional y la seguridad psicológica.</li>
+                <li><strong>Optimización Operativa:</strong> Identificar cuellos de botella y trabas burocráticas a través de preguntas abiertas de alto impacto (P69-P71).</li>
+                <li><strong>Garantía de Anonimato:</strong> Asegurar la confidencialidad total mediante infraestructura digital anónima en Supabase y GitHub Pages.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 2: FASES DETALLADAS -->
+    <div id="tab-fases" class="tab-content">
+        <div class="card">
+            <h2>Detalle Completo de las Fases de Ejecución</h2>
+            
+            <div class="fase-box">
+                <h3>FASE I: Planificación, Configuración Técnica e Infraestructura <span class="duracion">Semana 1</span></h3>
+                <ul>
+                    <li>Parametrización completa del formulario estructurado de 80 reactivos en el frontend web.</li>
+                    <li>Despliegue de la base de datos en Supabase e implementación de políticas Row Level Security (RLS) para proteger el anonimato.</li>
+                    <li>Configuración del selector de Sedes Centrales, Sucursales y Tiendas Regionales del IPSFANB.</li>
+                    <li>Pruebas de transmisión de datos en vivo (Stress testing y confirmación del <strong>Hito H1</strong>).</li>
+                </ul>
+            </div>
+
+            <div class="fase-box">
+                <h3>FASE II: Campaña de Sensibilización y Comunicación Institucional <span class="duracion">Semana 2</span></h3>
+                <ul>
+                    <li>Lanzamiento formal de la campaña comunicacional bajo el concepto <strong>«Venezuela Renace»</strong>.</li>
+                    <li>Distribución de afiches institucionales y material digital a través de los canales internos.</li>
+                    <li>Despliegue de comunicados garantizando la transparencia, seguridad y confidencialidad del proceso.</li>
+                    <li>Envío del enlace oficial de participación a todas las dependencias del IPSFANB (Confirmación del <strong>Hito H2</strong>).</li>
+                </ul>
+            </div>
+
+            <div class="fase-box">
+                <h3>FASE III: Levantamiento de Campo e Ingreso de Respuestas <span class="duracion">Semanas 3 y 4</span></h3>
+                <ul>
+                    <li>Apertura del formulario web para la captación de respuestas a nivel nacional.</li>
+                    <li>Monitoreo diario de la Tasa de Participación Global (TPG) por sede y gerencia.</li>
+                    <li>Soporte técnico continuo e impulso comunicacional a mitad del período de campo.</li>
+                    <li>Cierre formal del sistema y consolidación de la base de datos (Confirmación del <strong>Hito H3</strong>).</li>
+                </ul>
+            </div>
+
+            <div class="fase-box">
+                <h3>FASE IV: Procesamiento, Minería y Análisis de Datos <span class="duracion">Semana 5</span></h3>
+                <ul>
+                    <li>Extracción y depuración de la base de datos anonimizada desde Supabase.</li>
+                    <li>Cálculo de los 4 Índices Dimensionales en escala Likert (Involucramiento, Liderazgo, Adaptabilidad y Bienestar).</li>
+                    <li>Procesamiento cualitativo y categorización de texto libre (P69 Fortalezas, P70 Oportunidades y P71 Burocracia).</li>
+                    <li>Cálculo del eNPS Interno e Índice Global de Salud Organizacional (Confirmación del <strong>Hito H4</strong>).</li>
+                </ul>
+            </div>
+
+            <div class="fase-box">
+                <h3>FASE V: Presentación Directiva e Implementación de Acciones <span class="duracion">Semana 6</span></h3>
+                <ul>
+                    <li>Elaboración del Informe Ejecutivo Final con hallazgos clave y gráficos consolidados.</li>
+                    <li>Presentación oficial de resultados ante la Junta Directiva del IPSFANB.</li>
+                    <li>Aprobación y activación de la Matriz de Acciones Correctivas, Preventivas y Mantenimiento.</li>
+                    <li>Publicación de compromisos organizacionales a los trabajadores (Confirmación del <strong>Hito H5</strong>).</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 3: GANTT -->
+    <div id="tab-gantt" class="tab-content">
+        <div class="card">
+            <h2>Cronograma de Ejecución y Diagrama de Gantt</h2>
+            <div class="svg-wrap">
+                <!-- SVG GANTT EMBEDDED -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" width="100%" height="100%" style="background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif;">
+                  <rect x="20" y="20" width="960" height="580" rx="10" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5" filter="drop-shadow(0px 8px 16px rgba(0,0,0,0.1))"/>
+                  <rect x="20" y="20" width="960" height="10" rx="4" fill="#4A0E17"/>
+                  <text x="50" y="65" font-size="22" font-weight="bold" fill="#4A0E17">DIAGRAMA DE GANTT Y HITOS CLAVE DEL PROYECTO</text>
+                  <text x="50" y="88" font-size="13" fill="#666666">Encuesta de Salud Organizacional — IPSFANB | Venezuela Renace</text>
+                  <rect x="750" y="48" width="190" height="32" rx="6" fill="#4A0E17"/>
+                  <text x="845" y="69" font-size="11" font-weight="bold" fill="#F1C40F" text-anchor="middle" letter-spacing="1">VENEZUELA RENACE</text>
+                  <rect x="50" y="115" width="900" height="40" fill="#4A0E17" rx="4"/>
+                  <text x="70" y="140" font-size="13" font-weight="bold" fill="#ffffff">Fases del Proyecto e Hitos de Entrega</text>
+                  <text x="470" y="140" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Sem 1</text>
+                  <text x="550" y="140" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Sem 2</text>
+                  <text x="630" y="140" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Sem 3</text>
+                  <text x="710" y="140" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Sem 4</text>
+                  <text x="790" y="140" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Sem 5</text>
+                  <text x="870" y="140" font-size="12" font-weight="bold" fill="#ffffff" text-anchor="middle">Sem 6</text>
+                  <line x1="470" y1="155" x2="470" y2="480" stroke="#f0f0f0" stroke-width="1.5" stroke-dasharray="4"/>
+                  <line x1="550" y1="155" x2="550" y2="480" stroke="#f0f0f0" stroke-width="1.5" stroke-dasharray="4"/>
+                  <line x1="630" y1="155" x2="630" y2="480" stroke="#f0f0f0" stroke-width="1.5" stroke-dasharray="4"/>
+                  <line x1="710" y1="155" x2="710" y2="480" stroke="#f0f0f0" stroke-width="1.5" stroke-dasharray="4"/>
+                  <line x1="790" y1="155" x2="790" y2="480" stroke="#f0f0f0" stroke-width="1.5" stroke-dasharray="4"/>
+                  <line x1="870" y1="155" x2="870" y2="480" stroke="#f0f0f0" stroke-width="1.5" stroke-dasharray="4"/>
+                  <text x="70" y="185" font-size="13" font-weight="bold" fill="#2c3e50">Fase I: Configuración Técnica &amp; Infraestructura</text>
+                  <rect x="435" y="172" width="70" height="18" rx="9" fill="#3b5998"/>
+                  <g transform="translate(470,212)">
+                    <rect x="-8" y="-8" width="16" height="16" fill="#D4AF37" transform="rotate(45)" stroke="#4A0E17" stroke-width="1"/>
+                    <text x="0" y="4" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">H1</text>
+                  </g>
+                  <text x="70" y="215" font-size="12" fill="#555555">└─ Hito 1: Servidor, BD Supabase y Web Listos</text>
+                  <line x1="50" y1="230" x2="950" y2="230" stroke="#f0f0f0" stroke-width="1"/>
+                  <text x="70" y="255" font-size="13" font-weight="bold" fill="#2c3e50">Fase II: Sensibilización y Difusión</text>
+                  <rect x="515" y="242" width="70" height="18" rx="9" fill="#3b5998"/>
+                  <g transform="translate(550,282)">
+                    <rect x="-8" y="-8" width="16" height="16" fill="#D4AF37" transform="rotate(45)" stroke="#4A0E17" stroke-width="1"/>
+                    <text x="0" y="4" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">H2</text>
+                  </g>
+                  <text x="70" y="285" font-size="12" fill="#555555">└─ Hito 2: Campaña "Venezuela Renace" Lanzada</text>
+                  <line x1="50" y1="300" x2="950" y2="300" stroke="#f0f0f0" stroke-width="1"/>
+                  <text x="70" y="325" font-size="13" font-weight="bold" fill="#2c3e50">Fase III: Levantamiento de Datos (Encuestado)</text>
+                  <rect x="595" y="312" width="150" height="18" rx="9" fill="#3b5998"/>
+                  <g transform="translate(710,352)">
+                    <rect x="-8" y="-8" width="16" height="16" fill="#D4AF37" transform="rotate(45)" stroke="#4A0E17" stroke-width="1"/>
+                    <text x="0" y="4" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">H3</text>
+                  </g>
+                  <text x="70" y="355" font-size="12" fill="#555555">└─ Hito 3: Cierre de Campo y Consolidación de Respuestas</text>
+                  <line x1="50" y1="370" x2="950" y2="370" stroke="#f0f0f0" stroke-width="1"/>
+                  <text x="70" y="395" font-size="13" font-weight="bold" fill="#2c3e50">Fase IV: Procesamiento y Análisis de Datos</text>
+                  <rect x="755" y="382" width="70" height="18" rx="9" fill="#3b5998"/>
+                  <g transform="translate(790,422)">
+                    <rect x="-8" y="-8" width="16" height="16" fill="#D4AF37" transform="rotate(45)" stroke="#4A0E17" stroke-width="1"/>
+                    <text x="0" y="4" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">H4</text>
+                  </g>
+                  <text x="70" y="425" font-size="12" fill="#555555">└─ Hito 4: Diagnóstico y Dashboard Consolidado</text>
+                  <line x1="50" y1="440" x2="950" y2="440" stroke="#f0f0f0" stroke-width="1"/>
+                  <text x="70" y="465" font-size="13" font-weight="bold" fill="#2c3e50">Fase V: Entrega de Resultados e Impacto</text>
+                  <rect x="835" y="452" width="70" height="18" rx="9" fill="#3b5998"/>
+                  <g transform="translate(870,492)">
+                    <rect x="-8" y="-8" width="16" height="16" fill="#D4AF37" transform="rotate(45)" stroke="#4A0E17" stroke-width="1"/>
+                    <text x="0" y="4" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">H5</text>
+                  </g>
+                  <text x="70" y="495" font-size="12" fill="#555555">└─ Hito 5: Presentación Directiva y Plan de Acción Aprobado</text>
+                  <rect x="50" y="525" width="900" height="45" rx="6" fill="#f4f7f6" stroke="#e0e0e0"/>
+                  <rect x="250" y="542" width="25" height="10" rx="3" fill="#3b5998"/>
+                  <text x="285" y="551" font-size="12" fill="#444444">Duración de la Fase</text>
+                  <g transform="translate(560,547)">
+                    <rect x="-7" y="-7" width="14" height="14" fill="#D4AF37" transform="rotate(45)" stroke="#4A0E17" stroke-width="1"/>
+                  </g>
+                  <text x="580" y="551" font-size="12" font-weight="bold" fill="#4A0E17">Hito Clave de Entregable (H1 al H5)</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 4: HITOS Y CRITERIOS -->
+    <div id="tab-hitos" class="tab-content">
+        <div class="card">
+            <h2>Matriz de Entregables Claves y Criterios de Éxito</h2>
+            <div class="svg-wrap">
+                <!-- SVG ENTREGABLES EMBEDDED -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="100%" height="100%" style="background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif;">
+                  <rect x="20" y="20" width="960" height="640" rx="10" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5" filter="drop-shadow(0px 8px 16px rgba(0,0,0,0.1))"/>
+                  <rect x="20" y="20" width="960" height="10" rx="4" fill="#4A0E17"/>
+                  <text x="50" y="65" font-size="22" font-weight="bold" fill="#4A0E17">MATRIZ DE ENTREGABLES CLAVES Y CRITERIOS DE ÉXITO</text>
+                  <text x="50" y="88" font-size="13" fill="#666666">Encuesta de Salud Organizacional — IPSFANB | Venezuela Renace</text>
+                  <rect x="750" y="48" width="190" height="32" rx="6" fill="#4A0E17"/>
+                  <text x="845" y="69" font-size="11" font-weight="bold" fill="#F1C40F" text-anchor="middle" letter-spacing="1">VENEZUELA RENACE</text>
+                  <rect x="50" y="115" width="900" height="40" fill="#4A0E17" rx="4"/>
+                  <text x="80" y="140" font-size="12" font-weight="bold" fill="#ffffff">Hito</text>
+                  <text x="140" y="140" font-size="12" font-weight="bold" fill="#ffffff">Hito del Proyecto</text>
+                  <text x="360" y="140" font-size="12" font-weight="bold" fill="#ffffff">Entregable Clave</text>
+                  <text x="670" y="140" font-size="12" font-weight="bold" fill="#ffffff">Criterio de Éxito / Validación</text>
+                  <!-- H1 -->
+                  <rect x="50" y="165" width="900" height="75" rx="6" fill="#fdfdfd" stroke="#eee" stroke-width="1"/>
+                  <g transform="translate(90,202)"><rect x="-12" y="-12" width="24" height="24" fill="#D4AF37" transform="rotate(45)" stroke="#4A0E17" stroke-width="1.5"/><text x="0" y="4" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">H1</text></g>
+                  <text x="140" y="195" font-size="13" font-weight="bold" fill="#2c3e50">Infraestructura</text>
+                  <text x="140" y="213" font-size="12" font-weight="bold" fill="#2c3e50">Validada</text>
+                  <text x="360" y="195" font-size="12" fill="#555555">• Web en GitHub Pages lista</text>
+                  <text x="360" y="213" font-size="12" fill="#555555">• Base de datos Supabase activa</text>
+                  <text x="670" y="195" font-size="12" font-weight="bold" fill="#27ae60">✔ Transmisión de datos al 100%</text>
+                  <text x="670" y="213" font-size="12" fill="#555555">   Pruebas RLS y seguridad superadas</text>
+                  <!-- H2 -->
+                  <rect x="50" y="250" width="900" height="75" rx="6" fill="#fdfdfd" stroke="#eee" stroke-width="1"/>
+                  <g transform="translate(90,287)"><rect x="-12" y="-12" width="24" height="24" fill="#D4AF37" transform="rotate(45)" stroke="#4A0E17" stroke-width="1.5"/><text x="0" y="4" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">H2</text></g>
+                  <text x="140" y="280" font-size="13" font-weight="bold" fill="#2c3e50">Campaña</text>
+                  <text x="140" y="298" font-size="12" font-weight="bold" fill="#2c3e50">Desplegada</text>
+                  <text x="360" y="280" font-size="12" fill="#555555">• Afiches "Venezuela Renace"</text>
+                  <text x="360" y="298" font-size="12" fill="#555555">• Invitaciones enviadas a sedes</text>
+                  <text x="670" y="280" font-size="12" font-weight="bold" fill="#27ae60">✔ Cobertura del 100% en sedes</text>
+                  <text x="670" y="298" font-size="12" fill="#555555">   Personal informado del anonimato</text>
+                  <!-- H3 -->
+                  <rect x="50" y="335" width="900" height="75" rx="6" fill="#fdfdfd" stroke="#eee" stroke-width="1"/>
+                  <g transform="translate(90,372)"><rect x="-12" y="-12" width="24" height="24" fill="#D4AF37" transform="rotate(45)" stroke="#4A0E17" stroke-width="1.5"/><text x="0" y="4" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">H3</text></g>
+                  <text x="140" y="365" font-size="13" font-weight="bold" fill="#2c3e50">Cierre de Campo</text>
+                  <text x="140" y="383" font-size="12" font-weight="bold" fill="#2c3e50">y Recolección</text>
+                  <text x="360" y="365" font-size="12" fill="#555555">• Base de datos consolidada</text>
+                  <text x="360" y="383" font-size="12" fill="#555555">• Cierre formal de formulario web</text>
+                  <text x="670" y="365" font-size="12" font-weight="bold" fill="#27ae60">✔ Participación ≥ 75% en nómina</text>
+                  <text x="670" y="383" font-size="12" fill="#555555">   Representatividad por sede y gerencia</text>
+                  <!-- H4 -->
+                  <rect x="50" y="420" width="900" height="75" rx="6" fill="#fdfdfd" stroke="#eee" stroke-width="1"/>
+                  <g transform="translate(90,457)"><rect x="-12" y="-12" width="24" height="24" fill="#D4AF37" transform="rotate(45)" stroke="#4A0E17" stroke-width="1.5"/><text x="0" y="4" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">H4</text></g>
+                  <text x="140" y="450" font-size="13" font-weight="bold" fill="#2c3e50">Diagnóstico</text>
+                  <text x="140" y="468" font-size="12" font-weight="bold" fill="#2c3e50">Finalizado</text>
+                  <text x="360" y="450" font-size="12" fill="#555555">• Dashboard de métricas e eNPS</text>
+                  <text x="360" y="468" font-size="12" fill="#555555">• Matriz de análisis cualitativo</text>
+                  <text x="670" y="450" font-size="12" font-weight="bold" fill="#27ae60">✔ Cálculo de los 4 Índices (Likert)</text>
+                  <text x="670" y="468" font-size="12" fill="#555555">   Comparativo entre sedes/sucursales</text>
+                  <!-- H5 -->
+                  <rect x="50" y="505" width="900" height="75" rx="6" fill="#fdfdfd" stroke="#eee" stroke-width="1"/>
+                  <g transform="translate(90,542)"><rect x="-12" y="-12" width="24" height="24" fill="#D4AF37" transform="rotate(45)" stroke="#4A0E17" stroke-width="1.5"/><text x="0" y="4" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">H5</text></g>
+                  <text x="140" y="535" font-size="13" font-weight="bold" fill="#2c3e50">Presentación</text>
+                  <text x="140" y="553" font-size="12" font-weight="bold" fill="#2c3e50">Directiva</text>
+                  <text x="360" y="535" font-size="12" fill="#555555">• Informe Ejecutivo de Resultados</text>
+                  <text x="360" y="553" font-size="12" fill="#555555">• Plan de Acción y Correcciones</text>
+                  <text x="670" y="535" font-size="12" font-weight="bold" fill="#27ae60">✔ Aprobación del Plan de Acción</text>
+                  <text x="670" y="553" font-size="12" fill="#555555">   Compromisos fijados por la Junta</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 5: MÉTRICAS OPERATIVAS -->
+    <div id="tab-operativas" class="tab-content">
+        <div class="card">
+            <h2>1. Métricas de Gestión del Proyecto (Operativas)</h2>
+            <div class="svg-wrap">
+                <!-- SVG MÉTRICAS OPERATIVAS EMBEDDED -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="100%" height="100%" style="background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif;">
+                  <rect x="20" y="20" width="960" height="660" rx="10" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5" filter="drop-shadow(0px 8px 16px rgba(0,0,0,0.1))"/>
+                  <rect x="20" y="20" width="960" height="10" rx="4" fill="#4A0E17"/>
+                  <text x="50" y="65" font-size="22" font-weight="bold" fill="#4A0E17">1. MÉTRICAS DE GESTIÓN DEL PROYECTO (OPERATIVAS)</text>
+                  <text x="50" y="88" font-size="13" fill="#666666">Control de Ejecución, Cobertura por Sedes y Rendimiento de Campo — IPSFANB</text>
+                  <rect x="750" y="48" width="190" height="32" rx="6" fill="#4A0E17"/>
+                  <text x="845" y="69" font-size="11" font-weight="bold" fill="#F1C40F" text-anchor="middle" letter-spacing="1">VENEZUELA RENACE</text>
+                  <!-- M1 -->
+                  <rect x="50" y="125" width="900" height="110" rx="8" fill="#fdfdfd" stroke="#4A0E17" stroke-width="1.5"/>
+                  <rect x="50" y="125" width="10" height="110" fill="#4A0E17"/>
+                  <text x="80" y="155" font-size="15" font-weight="bold" fill="#4A0E17">TASA DE PARTICIPACIÓN GLOBAL (TPG)</text>
+                  <text x="80" y="180" font-size="12" fill="#2c3e50">Fórmula: TPG = (Total Encuestas Completadas / Total Personal en Nómina) × 100</text>
+                  <text x="80" y="202" font-size="12" fill="#555555">• Mide el nivel de respuesta efectiva alcanzado en el IPSFANB, IPSFANBMIL e IPSFA.</text>
+                  <rect x="760" y="155" width="160" height="50" rx="6" fill="#4A0E17"/>
+                  <text x="840" y="178" font-size="10" fill="#D4AF37" text-anchor="middle" font-weight="bold">META OPERATIVA</text>
+                  <text x="840" y="196" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="bold">≥ 75% Participación</text>
+                  <!-- M2 -->
+                  <rect x="50" y="250" width="900" height="110" rx="8" fill="#fdfdfd" stroke="#3b5998" stroke-width="1.5"/>
+                  <rect x="50" y="250" width="10" height="110" fill="#3b5998"/>
+                  <text x="80" y="280" font-size="15" font-weight="bold" fill="#3b5998">TASA DE CONVERSIÓN Y FINALIZACIÓN DE FORMULARIO</text>
+                  <text x="80" y="305" font-size="12" fill="#2c3e50">Fórmula: TCF = (Encuestas Enviadas / Sesiones de Encuesta Iniciadas) × 100</text>
+                  <text x="80" y="327" font-size="12" fill="#555555">• Evalúa la usabilidad del sistema web y descarta fricción durante el llenado.</text>
+                  <rect x="760" y="280" width="160" height="50" rx="6" fill="#3b5998"/>
+                  <text x="840" y="303" font-size="10" fill="#ffffff" text-anchor="middle" font-weight="bold">META OPERATIVA</text>
+                  <text x="840" y="321" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="bold">≥ 90% Compleción</text>
+                  <!-- M3 -->
+                  <rect x="50" y="375" width="900" height="110" rx="8" fill="#fdfdfd" stroke="#27ae60" stroke-width="1.5"/>
+                  <rect x="50" y="375" width="10" height="110" fill="#27ae60"/>
+                  <text x="80" y="405" font-size="15" font-weight="bold" fill="#27ae60">COBERTURA POR SEDES Y SUCURSALES</text>
+                  <text x="80" y="430" font-size="12" fill="#2c3e50">Indicador: Cobertura del 100% de las Sedes Centrales, Sucursales y Tiendas Regionales</text>
+                  <text x="80" y="452" font-size="12" fill="#555555">• Asegura que todas las unidades del IPSFANB tengan representatividad equivalente.</text>
+                  <rect x="760" y="405" width="160" height="50" rx="6" fill="#27ae60"/>
+                  <text x="840" y="428" font-size="10" fill="#ffffff" text-anchor="middle" font-weight="bold">META OPERATIVA</text>
+                  <text x="840" y="446" font-size="16" fill="#ffffff" text-anchor="middle" font-weight="bold">100% Sedes</text>
+                  <!-- M4 -->
+                  <rect x="50" y="500" width="900" height="110" rx="8" fill="#fdfdfd" stroke="#D4AF37" stroke-width="1.5"/>
+                  <rect x="50" y="500" width="10" height="110" fill="#D4AF37"/>
+                  <text x="80" y="530" font-size="15" font-weight="bold" fill="#B8860B">EFECTIVIDAD CUALITATIVA (PREGUNTA ABIERTA)</text>
+                  <text x="80" y="555" font-size="12" fill="#2c3e50">Fórmula: TEC = (Respuestas Validadas en P69-P71 / Total Formularios Enviados) × 100</text>
+                  <text x="80" y="577" font-size="12" fill="#555555">• Mide el volumen de aportes cualitativos útiles sobre fortalezas, mejoras y burocracia.</text>
+                  <rect x="760" y="530" width="160" height="50" rx="6" fill="#D4AF37"/>
+                  <text x="840" y="553" font-size="10" fill="#4A0E17" text-anchor="middle" font-weight="bold">META OPERATIVA</text>
+                  <text x="840" y="571" font-size="16" fill="#4A0E17" text-anchor="middle" font-weight="bold">≥ 80% Aportes</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 6: DASHBOARD Y KPIS -->
+    <div id="tab-kpis" class="tab-content">
+        <div class="card">
+            <h2>Dashboard de Métricas, Indicadores y KPIs Estratégicos</h2>
+            <div class="svg-wrap">
+                <!-- SVG DASHBOARD KPIS EMBEDDED -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 720" width="100%" height="100%" style="background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif;">
+                  <rect x="20" y="20" width="960" height="680" rx="10" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5" filter="drop-shadow(0px 8px 16px rgba(0,0,0,0.1))"/>
+                  <rect x="20" y="20" width="960" height="10" rx="4" fill="#4A0E17"/>
+                  <text x="50" y="65" font-size="22" font-weight="bold" fill="#4A0E17">DASHBOARD DE MÉTRICAS, INDICADORES Y KPIS</text>
+                  <text x="50" y="88" font-size="13" fill="#666666">Sistema de Medición de Salud Organizacional — IPSFANB | Venezuela Renace</text>
+                  <rect x="750" y="48" width="190" height="32" rx="6" fill="#4A0E17"/>
+                  <text x="845" y="69" font-size="11" font-weight="bold" fill="#F1C40F" text-anchor="middle" letter-spacing="1">VENEZUELA RENACE</text>
+                  <text x="50" y="130" font-size="14" font-weight="bold" fill="#4A0E17">1. KPIS ESTRATÉGICOS (DIRECTIVOS)</text>
+                  <rect x="50" y="145" width="280" height="110" rx="8" fill="#fdfdfd" stroke="#3b5998" stroke-width="2"/>
+                  <text x="70" y="175" font-size="12" font-weight="bold" fill="#3b5998">eNPS INTERNO (PREGUNTA 64)</text>
+                  <text x="70" y="210" font-size="28" font-weight="bold" fill="#4A0E17">+45</text>
+                  <text x="70" y="235" font-size="10" fill="#666666">% Promotores - % Detractores (Meta: &gt; +30)</text>
+                  <rect x="360" y="145" width="280" height="110" rx="8" fill="#fdfdfd" stroke="#27ae60" stroke-width="2"/>
+                  <text x="380" y="175" font-size="12" font-weight="bold" fill="#27ae60">ÍNDICE GLOBAL SALUD (ICSO)</text>
+                  <text x="380" y="210" font-size="28" font-weight="bold" fill="#4A0E17">4.15 / 5</text>
+                  <text x="380" y="235" font-size="10" fill="#666666">Promedio Ponderado Global (Meta: &ge; 3.80)</text>
+                  <rect x="670" y="145" width="280" height="110" rx="8" fill="#fdfdfd" stroke="#D4AF37" stroke-width="2"/>
+                  <text x="690" y="175" font-size="12" font-weight="bold" fill="#B8860B">PARTICIPACIÓN GLOBAL (TPG)</text>
+                  <text x="690" y="210" font-size="28" font-weight="bold" fill="#4A0E17">82%</text>
+                  <text x="690" y="235" font-size="10" fill="#666666">Total Respuestas / Nómina Total (Meta: &ge; 75%)</text>
+                  <text x="50" y="295" font-size="14" font-weight="bold" fill="#4A0E17">2. INDICADORES POR DIMENSIÓN CULTURAL Y LIDERAZGO</text>
+                  <rect x="50" y="310" width="430" height="75" rx="6" fill="#fcfcfc" stroke="#eee" stroke-width="1"/>
+                  <text x="70" y="335" font-size="12" font-weight="bold" fill="#2c3e50">IIE: Involucramiento y Trabajo en Equipo</text>
+                  <text x="70" y="355" font-size="11" fill="#666666">Evaluación de delegación, cooperación y clima laboral</text>
+                  <text x="400" y="348" font-size="16" font-weight="bold" fill="#27ae60">4.20 / 5</text>
+                  <rect x="520" y="310" width="430" height="75" rx="6" fill="#fcfcfc" stroke="#eee" stroke-width="1"/>
+                  <text x="540" y="335" font-size="12" font-weight="bold" fill="#2c3e50">ILC: Liderazgo y Consistencia Directiva</text>
+                  <text x="540" y="355" font-size="11" fill="#666666">Confianza en alta gerencia, valores y supervisión</text>
+                  <text x="870" y="348" font-size="16" font-weight="bold" fill="#27ae60">3.95 / 5</text>
+                  <rect x="50" y="395" width="430" height="75" rx="6" fill="#fcfcfc" stroke="#eee" stroke-width="1"/>
+                  <text x="70" y="420" font-size="12" font-weight="bold" fill="#2c3e50">IAM: Adaptabilidad y Misión Estratégica</text>
+                  <text x="70" y="440" font-size="11" fill="#666666">Claridad de visión a futuro e innovación institucional</text>
+                  <text x="400" y="433" font-size="16" font-weight="bold" fill="#27ae60">4.10 / 5</text>
+                  <rect x="520" y="395" width="430" height="75" rx="6" fill="#fcfcfc" stroke="#eee" stroke-width="1"/>
+                  <text x="540" y="420" font-size="12" font-weight="bold" fill="#2c3e50">IBE: Bienestar y Entorno de Trabajo</text>
+                  <text x="540" y="440" font-size="11" fill="#666666">Equilibrio laboral, carga de trabajo y salud ocupacional</text>
+                  <text x="870" y="433" font-size="16" font-weight="bold" fill="#d35400">3.65 / 5</text>
+                  <text x="50" y="505" font-size="14" font-weight="bold" fill="#4A0E17">3. MÉTRICAS DE CONTROL OPERATIVO Y COBERTURA</text>
+                  <rect x="50" y="520" width="900" height="120" rx="6" fill="#4A0E17"/>
+                  <text x="80" y="555" font-size="12" font-weight="bold" fill="#F1C40F">• Tasa de Conversión de Envíos:</text>
+                  <text x="320" y="555" font-size="12" fill="#ffffff">94% de empleados completaron la encuesta al iniciar (Meta: &ge; 90%)</text>
+                  <text x="80" y="585" font-size="12" font-weight="bold" fill="#F1C40F">• Cobertura de Sedes / Sucursales:</text>
+                  <text x="320" y="585" font-size="12" fill="#ffffff">100% de representatividad en Sede Central, Sucursales y Tiendas</text>
+                  <text x="80" y="615" font-size="12" font-weight="bold" fill="#F1C40F">• Calidad de Datos Cualitativos:</text>
+                  <text x="320" y="615" font-size="12" fill="#ffffff">88% de respuesta efectiva en preguntas abiertas de alto impacto (P69-P71)</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 7: CAPAS DE ANÁLISIS -->
+    <div id="tab-capas" class="tab-content">
+        <div class="card">
+            <h2>Arquitectura de Capas de Análisis</h2>
+            <div class="svg-wrap">
+                <!-- SVG CAPAS ANÁLISIS EMBEDDED -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 750" width="100%" height="100%" style="background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif;">
+                  <rect x="20" y="20" width="960" height="710" rx="10" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5" filter="drop-shadow(0px 8px 16px rgba(0,0,0,0.1))"/>
+                  <rect x="20" y="20" width="960" height="10" rx="4" fill="#4A0E17"/>
+                  <text x="50" y="65" font-size="22" font-weight="bold" fill="#4A0E17">ARQUITECTURA DE CAPAS DE ANÁLISIS</text>
+                  <text x="50" y="88" font-size="13" fill="#666666">Estructura de Transformación de Datos en Decisiones Estratégicas — IPSFANB</text>
+                  <rect x="750" y="48" width="190" height="32" rx="6" fill="#4A0E17"/>
+                  <text x="845" y="69" font-size="11" font-weight="bold" fill="#F1C40F" text-anchor="middle" letter-spacing="1">VENEZUELA RENACE</text>
+                  <!-- CAPA 4 -->
+                  <rect x="150" y="125" width="700" height="110" rx="8" fill="#4A0E17" stroke="#D4AF37" stroke-width="2"/>
+                  <text x="180" y="155" font-size="15" font-weight="bold" fill="#F1C40F">CAPA 4: NIVEL ESTRATÉGICO Y TOMADORES DE DECISIÓN</text>
+                  <text x="180" y="180" font-size="12" fill="#ffffff">• Indicadores Clave: eNPS Interno (+45) e Índice Global de Salud Organizacional (ICSO: 4.15).</text>
+                  <text x="180" y="202" font-size="12" fill="#ffffff">• Entregable: Reporte Ejecutivo para la Alta Dirección y Matriz de Compromisos Institucionales.</text>
+                  <path d="M 500 245 L 500 260" stroke="#4A0E17" stroke-width="3" fill="none"/>
+                  <!-- CAPA 3 -->
+                  <rect x="110" y="265" width="780" height="110" rx="8" fill="#fdfdfd" stroke="#27ae60" stroke-width="2"/>
+                  <text x="140" y="295" font-size="15" font-weight="bold" fill="#27ae60">CAPA 3: ANÁLISIS CUALITATIVO Y DE SENTIMIENTO (TEXTO LIBRE)</text>
+                  <text x="140" y="320" font-size="12" fill="#2c3e50">• Evaluación de ítems abiertos de alto impacto: Fortalezas (P69), Áreas de Mejora (P70) y Burocracia (P71).</text>
+                  <text x="140" y="342" font-size="12" fill="#555555">• Agrupación temática mediante procesamiento de lenguaje para detectar cuellos de botella operativos.</text>
+                  <path d="M 500 385 L 500 400" stroke="#4A0E17" stroke-width="3" stroke-dasharray="4"/>
+                  <!-- CAPA 2 -->
+                  <rect x="80" y="405" width="840" height="110" rx="8" fill="#fdfdfd" stroke="#3b5998" stroke-width="2"/>
+                  <text x="110" y="435" font-size="15" font-weight="bold" fill="#3b5998">CAPA 2: SEGMENTACIÓN DEMOGRÁFICA Y TÁCTICA</text>
+                  <text x="110" y="460" font-size="12" fill="#2c3e50">• Cruce multidimensional por Organización (IPSFANB, IPSFANBMIL, IPSFA), Gerencia y Nivel Jerárquico.</text>
+                  <text x="110" y="482" font-size="12" fill="#555555">• Análisis territorial distribuido a través de Sedes Centrales, Sucursales y Tiendas Regionales.</text>
+                  <path d="M 500 525 L 500 540" stroke="#4A0E17" stroke-width="3" stroke-dasharray="4"/>
+                  <!-- CAPA 1 -->
+                  <rect x="50" y="545" width="900" height="110" rx="8" fill="#f4f7f6" stroke="#95a5a6" stroke-width="1.5"/>
+                  <text x="80" y="575" font-size="15" font-weight="bold" fill="#2c3e50">CAPA 1: DATOS PRIMARIOS Y RESPUESTAS BÁSICAS (BASE BD)</text>
+                  <text x="80" y="600" font-size="12" fill="#555555">• Recolección de 68 reactivos cuantitativos en escala Likert (1 a 5 y N/A) agrupados en 9 dimensiones.</text>
+                  <text x="80" y="622" font-size="12" fill="#555555">• Almacenamiento seguro e inalterable en Supabase en formato JSONB con políticas RLS de anonimato.</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 8: MATRIZ DE ACCIONES -->
+    <div id="tab-acciones" class="tab-content">
+        <div class="card">
+            <h2>Matriz de Acciones Correctivas y Preventivas</h2>
+            <div class="svg-wrap">
+                <!-- SVG MATRIZ ACCIONES EMBEDDED -->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 720" width="100%" height="100%" style="background-color: #f8f9fa; font-family: 'Segoe UI', Arial, sans-serif;">
+                  <rect x="20" y="20" width="960" height="680" rx="10" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5" filter="drop-shadow(0px 8px 16px rgba(0,0,0,0.1))"/>
+                  <rect x="20" y="20" width="960" height="10" rx="4" fill="#4A0E17"/>
+                  <text x="50" y="65" font-size="22" font-weight="bold" fill="#4A0E17">MATRIZ DE ACCIONES CORRECTIVAS Y PREVENTIVAS</text>
+                  <text x="50" y="88" font-size="13" fill="#666666">Planes de Intervención según Rango de Puntuación — IPSFANB | Venezuela Renace</text>
+                  <rect x="750" y="48" width="190" height="32" rx="6" fill="#4A0E17"/>
+                  <text x="845" y="69" font-size="11" font-weight="bold" fill="#F1C40F" text-anchor="middle" letter-spacing="1">VENEZUELA RENACE</text>
+                  <rect x="50" y="115" width="900" height="40" fill="#4A0E17" rx="4"/>
+                  <text x="70" y="140" font-size="12" font-weight="bold" fill="#ffffff">Puntuación</text>
+                  <text x="180" y="140" font-size="12" font-weight="bold" fill="#ffffff">Diagnóstico / Nivel</text>
+                  <text x="350" y="140" font-size="12" font-weight="bold" fill="#ffffff">Tipo de Acción</text>
+                  <text x="530" y="140" font-size="12" font-weight="bold" fill="#ffffff">Plan de Acción Específico</text>
+                  <!-- ZONA CRITICA -->
+                  <rect x="50" y="165" width="900" height="150" rx="6" fill="#fdfdfd" stroke="#e74c3c" stroke-width="1.5"/>
+                  <rect x="50" y="165" width="10" height="150" fill="#e74c3c"/>
+                  <text x="70" y="210" font-size="16" font-weight="bold" fill="#e74c3c">1.00 - 2.99</text>
+                  <text x="70" y="230" font-size="10" fill="#666666">Escala Likert</text>
+                  <rect x="180" y="195" width="140" height="30" rx="4" fill="#fadbd8"/>
+                  <text x="250" y="215" font-size="11" font-weight="bold" fill="#78281f" text-anchor="middle">ZONA CRÍTICA</text>
+                  <text x="350" y="215" font-size="12" font-weight="bold" fill="#c0392b">Correctiva Inmediata</text>
+                  <text x="530" y="195" font-size="12" fill="#2c3e50">• Mesas de trabajo transversales para revisar carga laboral y burocracia.</text>
+                  <text x="530" y="215" font-size="12" fill="#2c3e50">• Programa de intervención rápida en liderazgo y comunicación directa.</text>
+                  <text x="530" y="235" font-size="12" fill="#2c3e50">• Mapeo y rediseño de procesos críticos reportados en la Pregunta 71.</text>
+                  <text x="530" y="255" font-size="12" fill="#2c3e50">• Monitoreo y seguimiento semanal por la Dirección General.</text>
+                  <!-- ZONA RIESGO -->
+                  <rect x="50" y="330" width="900" height="150" rx="6" fill="#fdfdfd" stroke="#e67e22" stroke-width="1.5"/>
+                  <rect x="50" y="330" width="10" height="150" fill="#e67e22"/>
+                  <text x="70" y="375" font-size="16" font-weight="bold" fill="#e67e22">3.00 - 3.79</text>
+                  <text x="70" y="395" font-size="10" fill="#666666">Escala Likert</text>
+                  <rect x="180" y="360" width="140" height="30" rx="4" fill="#fdebd0"/>
+                  <text x="250" y="380" font-size="11" font-weight="bold" fill="#6e2c00" text-anchor="middle">ZONA DE RIESGO</text>
+                  <text x="350" y="380" font-size="12" font-weight="bold" fill="#d35400">Preventiva / Mejora</text>
+                  <text x="530" y="360" font-size="12" fill="#2c3e50">• Talleres de retroalimentación efectiva y reconocimiento para mandos medios.</text>
+                  <text x="530" y="380" font-size="12" fill="#2c3e50">• Revisión de planes de carrera y formación técnica (Preguntas 61 y 62).</text>
+                  <text x="530" y="400" font-size="12" fill="#2c3e50">• Ajustes en los canales institucionales de difusión interna.</text>
+                  <text x="530" y="420" font-size="12" fill="#2c3e50">• Evaluación semestral de avance de indicadores institucionales.</text>
+                  <!-- FORTALEZAS -->
+                  <rect x="50" y="495" width="900" height="145" rx="6" fill="#fdfdfd" stroke="#27ae60" stroke-width="1.5"/>
+                  <rect x="50" y="495" width="10" height="145" fill="#27ae60"/>
+                  <text x="70" y="540" font-size="16" font-weight="bold" fill="#27ae60">3.80 - 5.00</text>
+                  <text x="70" y="560" font-size="10" fill="#666666">Escala Likert</text>
+                  <rect x="180" y="525" width="140" height="30" rx="4" fill="#d4efdf"/>
+                  <text x="250" y="545" font-size="11" font-weight="bold" fill="#145a32" text-anchor="middle">FORTALEZAS</text>
+                  <text x="350" y="545" font-size="12" font-weight="bold" fill="#1e8449">Mantenimiento</text>
+                  <text x="530" y="525" font-size="12" fill="#2c3e50">• Sistematización y documentación de mejores prácticas (Pregunta 69).</text>
+                  <text x="530" y="545" font-size="12" fill="#2c3e50">• Reconocimiento público a las dependencias con mayor clima de colaboración.</text>
+                  <text x="530" y="565" font-size="12" fill="#2c3e50">• Establecimiento de programas de mentores internos interdepartamentales.</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+        
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+        window.scrollTo(0, 0);
+    }
+</script>
+
+</body>
+</html>

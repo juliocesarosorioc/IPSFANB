@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Diagrama de Gantt - Proyecto Encuesta Inversora IPSFANB</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f7f6;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+        }
+        .gantt-card {
+            width: 1000px;
+            background: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            padding: 30px;
+            border-top: 6px solid #4A0E17;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+        .header h1 {
+            color: #4A0E17;
+            font-size: 22px;
+            margin: 0;
+            text-transform: uppercase;
+        }
+        .header span {
+            background-color: #D4AF37;
+            color: #fff;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        /* TABLA GANTT */
+        .gantt-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .gantt-table th, .gantt-table td {
+            padding: 12px 10px;
+            font-size: 13px;
+            text-align: center;
+        }
+        .gantt-table th {
+            background-color: #4A0E17;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .gantt-table th.task-col {
+            text-align: left;
+            width: 40%;
+        }
+        .gantt-table tr:nth-child(even) {
+            background-color: #fdfdfd;
+        }
+        .gantt-table tr {
+            border-bottom: 1px solid #eef2f5;
+        }
+
+        /* BARRAS Y HITOS */
+        .bar {
+            height: 18px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, #5b677a, #3b5998);
+            margin: 0 auto;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .milestone {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background-color: #D4AF37;
+            transform: rotate(45deg);
+            margin: 0 auto;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .milestone-text {
+            font-size: 10px;
+            font-weight: bold;
+            color: #4A0E17;
+            margin-top: 2px;
+        }
+
+        /* LEYENDA */
+        .legend {
+            display: flex;
+            gap: 20px;
+            margin-top: 25px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+            font-size: 12px;
+            color: #555;
+            justify-content: center;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .legend-bar {
+            width: 25px;
+            height: 10px;
+            background: linear-gradient(90deg, #5b677a, #3b5998);
+            border-radius: 4px;
+        }
+        .legend-diamond {
+            width: 10px;
+            height: 10px;
+            background-color: #D4AF37;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+
+<div class="gantt-card">
+    <div class="header">
+        <div>
+            <h1>Diagrama de Gantt - Cronograma de Ejecución</h1>
+            <small style="color:#666;">Proyecto: Encuesta de Salud Organizacional e Inversora IPSFANB</small>
+        </div>
+        <span>VENEZUELA RENACE</span>
+    </div>
+
+    <table class="gantt-table">
+        <thead>
+            <tr>
+                <th class="task-col">Fase / Actividad del Proyecto</th>
+                <th>Sem 1</th>
+                <th>Sem 2</th>
+                <th>Sem 3</th>
+                <th>Sem 4</th>
+                <th>Sem 5</th>
+                <th>Sem 6</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- FASE 1 -->
+            <tr>
+                <td style="text-align:left; font-weight:bold; color:#4A0E17;">FASE I: Planificación y Configuración Técnica</td>
+                <td><div class="bar" style="width: 80%;"></div></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left; padding-left:25px; color:#555;">└─ Hito 1: Infraestructura Web y BD Aprobada</td>
+                <td><div class="milestone"></div><div class="milestone-text">H1</div></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <!-- FASE 2 -->
+            <tr>
+                <td style="text-align:left; font-weight:bold; color:#4A0E17;">FASE II: Campaña de Sensibilización</td>
+                <td></td>
+                <td><div class="bar" style="width: 80%;"></div></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left; padding-left:25px; color:#555;">└─ Hito 2: Lanzamiento Comunicacional Desplegado</td>
+                <td></td>
+                <td><div class="milestone"></div><div class="milestone-text">H2</div></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <!-- FASE 3 -->
+            <tr>
+                <td style="text-align:left; font-weight:bold; color:#4A0E17;">FASE III: Levantamiento de Campo (Encuestas)</td>
+                <td></td>
+                <td></td>
+                <td><div class="bar" style="width: 90%;"></div></td>
+                <td><div class="bar" style="width: 90%;"></div></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left; padding-left:25px; color:#555;">└─ Hito 3: Cierre y Consolidación de Recolección</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><div class="milestone"></div><div class="milestone-text">H3</div></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <!-- FASE 4 -->
+            <tr>
+                <td style="text-align:left; font-weight:bold; color:#4A0E17;">FASE IV: Procesamiento y Análisis de Datos</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><div class="bar" style="width: 80%;"></div></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td style="text-align:left; padding-left:25px; color:#555;">└─ Hito 4: Diagnóstico y Dashboard Finalizado</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><div class="milestone"></div><div class="milestone-text">H4</div></td>
+                <td></td>
+            </tr>
+
+            <!-- FASE 5 -->
+            <tr>
+                <td style="text-align:left; font-weight:bold; color:#4A0E17;">FASE V: Entrega e Implementación de Acciones</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><div class="bar" style="width: 80%;"></div></td>
+            </tr>
+            <tr>
+                <td style="text-align:left; padding-left:25px; color:#555;">└─ Hito 5: Presentación Directiva y Plan de Acción</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><div class="milestone"></div><div class="milestone-text">H5</div></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="legend">
+        <div class="legend-item">
+            <div class="legend-bar"></div>
+            <span>Período de Ejecución de Fase</span>
+        </div>
+        <div class="legend-item">
+            <div class="legend-diamond"></div>
+            <span>Hito Clave de Entrega (H1 a H5)</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
