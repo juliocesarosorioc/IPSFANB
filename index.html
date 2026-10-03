@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Encuesta de Salud Organizacional y Compromiso Estratégico</title>
+    <title>Encuesta de Salud Organizacional - Inversora IPSFANB</title>
+    <link rel="icon" href="data:,">
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.5; margin: 0; padding: 0; }
-        .header-bar { background-color: #5b677a; color: white; padding: 15px 20px; font-size: 1.5em; text-align: left; }
+        .header-bar { background-color: #5b677a; color: white; padding: 15px 20px; font-size: 1.5em; text-align: left; font-weight: bold; }
         .container { max-width: 1200px; margin: 30px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         
         .page { display: none; }
@@ -14,16 +15,18 @@
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         .welcome-screen { text-align: center; }
-        .welcome-screen h1 { color: #2c3e50; font-weight: normal; margin-bottom: 20px; }
-        .welcome-screen img { max-width: 250px; margin: 20px 0; }
-        .desc-texto { color: #555; max-width: 800px; margin: 0 auto 30px auto; font-size: 1.1em; }
+        .welcome-screen h1 { color: #2c3e50; font-weight: bold; margin-bottom: 20px; font-size: 1.8em; }
+        .welcome-screen img { max-width: 280px; height: auto; margin: 20px 0; }
+        .desc-texto { color: #555; max-width: 850px; margin: 0 auto 30px auto; font-size: 1.05em; text-align: justify; }
+
+        .info-card { background-color: #f8f9fa; border-left: 4px solid #5b677a; padding: 15px 20px; margin-bottom: 20px; border-radius: 0 4px 4px 0; }
+        .info-card h3 { margin-top: 0; color: #2c3e50; }
 
         h2.section-title { color: #2c3e50; font-size: 1.6em; margin-bottom: 5px; font-weight: bold; }
         p.section-desc { color: #666; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #eee; font-size: 0.95em; }
         
         .instrucciones-texto p { margin-bottom: 15px; font-size: 1em; }
         
-        /* Diseño de tabla interactiva (Desktop) a Lista (Mobile) */
         .pregunta-row { display: flex; border: 1px solid #d1d5db; margin-bottom: 8px; border-radius: 4px; overflow: hidden; transition: border-color 0.3s; }
         .pregunta-row.error { border-color: #e74c3c; box-shadow: 0 0 5px rgba(231,76,60,0.5); }
         .pregunta-texto { flex: 0 0 45%; background-color: #e9ecef; padding: 15px; font-size: 0.95em; box-sizing: border-box; border-right: 1px solid #d1d5db; color: #333; }
@@ -53,6 +56,8 @@
         .progress-bar { width: 100%; background-color: #e0e0e0; height: 10px; border-radius: 5px; margin-bottom: 20px; overflow: hidden; }
         .progress-fill { height: 100%; background-color: #428b55; width: 0%; transition: width 0.3s ease; }
 
+        .readonly-field { background-color: #e9ecef; color: #666; cursor: not-allowed; }
+
         @media (max-width: 768px) {
             .container { padding: 15px; margin: 10px auto; }
             .pregunta-row { flex-direction: column; margin-bottom: 20px; }
@@ -67,22 +72,34 @@
 <body>
 
 <div class="header-bar">
-    Encuesta de Cultura y Salud Organizacional
+    Inversora IPSFANB | Encuesta de Cultura y Salud Organizacional
 </div>
 
 <div class="container">
     
-    <!-- Barra de progreso -->
     <div class="progress-bar" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
     
-    <!-- BIENVENIDA -->
+    <!-- BIENVENIDA ORIENTADA A INVERSORA IPSFANB -->
     <div id="page-0" class="page active welcome-screen">
         <h1>Encuesta de Salud Organizacional y Compromiso Estratégico</h1>
-        <img src="URL_DEL_LOGO.png" alt="Logo de la Organización">
+        
+        <!-- Muestra el logo subido a GitHub (logo.png) o texto alternativo si aún no está subido -->
+        <img src="logo.png" alt="Inversora IPSFANB" onerror="this.onerror=null; this.src='https://via.placeholder.com/280x100?text=INVERSORA+IPSFANB';">
         
         <div class="desc-texto">
-            <p><strong>Objetivo:</strong> Evaluar el clima laboral, el compromiso y la eficacia operativa de la organización mediante estándares internacionales.</p>
-            <p><strong>Confidencialidad:</strong> Esta encuesta es <strong>100% anónima</strong>. Los resultados se analizarán de forma agregada para garantizar la privacidad y fomentar la máxima honestidad[cite: 5].</p>
+            <div class="info-card">
+                <h3>¿Sabías qué?</h3>
+                <p>La intervención cultural no se limita a un ejercicio técnico; es un proceso que busca activar el sentido de pertenencia, el orgullo institucional y el propósito compartido. Su objetivo es alinear la estrategia con la forma en que trabajamos, colaboramos y nos relacionamos, asegurando que la cultura sea un motor de desempeño y excelencia operativa.</p>
+            </div>
+
+            <div class="info-card">
+                <h3>Nuestro Objetivo es Claro</h3>
+                <p>Evolucionar de manera ordenada, profesional y participativa, potenciando lo que ya hemos construido en la <strong>Inversora IPSFANB</strong> y generando las condiciones para una cultura más integrada, transparente y orientada al alto rendimiento.</p>
+            </div>
+
+            <p>La Encuesta de Cultura Organizacional en la que participarás es una herramienta clave para conocer cómo estamos viviendo actualmente nuestro entorno de trabajo e identificar fortalezas, necesidades y oportunidades de mejora.</p>
+            <p>Es una invitación a escucharnos, entender lo que necesitamos unos de otros y avanzar, porque desde cada responsabilidad y cada área, todos podemos llevar a la <strong>Inversora IPSFANB</strong> al nivel de excelencia institucional que se merece.</p>
+            <p><strong>Confidencialidad:</strong> Esta encuesta es <strong>100% anónima</strong>. Los resultados se analizarán de forma agregada para garantizar la privacidad y fomentar la máxima honestidad.</p>
         </div>
         
         <button type="button" class="btn-comenzar" onclick="nextPage()">Comenzar la encuesta →</button>
@@ -92,8 +109,8 @@
     <div id="page-1" class="page">
         <h2 class="section-title">Instrucciones</h2>
         <div class="instrucciones-texto">
-            <p>Lea las siguientes instrucciones y haga clic en el botón <strong>Siguiente</strong> que está en la parte inferior de la pantalla[cite: 5].</p>
-            <p>Esta encuesta ofrece una serie de declaraciones que describen los diferentes aspectos culturales de una empresa. Cuando responda, piense en su empresa en forma global y en cómo se hacen las cosas generalmente[cite: 5].</p>
+            <p>Lea las siguientes instrucciones y haga clic en el botón <strong>Siguiente</strong> que está en la parte inferior de la pantalla.</p>
+            <p>Esta encuesta ofrece una serie de declaraciones que describen los diferentes aspectos culturales de la institución. Cuando responda, piense en la empresa en forma global y en cómo se hacen las cosas generalmente.</p>
             <p>Califique cada afirmación utilizando la siguiente escala:</p>
             <ul>
                 <li><strong>1:</strong> Totalmente en desacuerdo</li>
@@ -102,8 +119,8 @@
                 <li><strong>4:</strong> De acuerdo</li>
                 <li><strong>5:</strong> Totalmente de acuerdo</li>
             </ul>
-            <p>Use <em>Neutral</em> cuando no esté de acuerdo ni en desacuerdo con la declaración. Cuando no aplique una respuesta, elija <em>N/A</em>[cite: 5].</p>
-            <p>Cuando haya respondido todas las preguntas, haga clic en <strong>Enviar Respuestas</strong> al final del formulario[cite: 5]. Muchas gracias por participar[cite: 5].</p>
+            <p>Use <em>Neutral</em> cuando no esté de acuerdo ni en desacuerdo con la declaración. Cuando no aplique una respuesta, elija <em>N/A</em>.</p>
+            <p>Cuando haya respondido todas las preguntas, haga clic en <strong>Enviar Respuestas</strong> al final del formulario.</p>
         </div>
         <div class="nav-buttons">
             <button type="button" class="btn-atras" onclick="prevPage()">← Anterior</button>
@@ -146,15 +163,117 @@
             <p class="section-desc">Esta información nos ayuda a segmentar los resultados de forma anónima.</p>
             <div class="error-mensaje" id="error-msg-demo">Por favor, complete todos los campos requeridos.</div>
             
-            <div class="pregunta-abierta"><label>72. Indique la organización a la que pertenece:</label><select name="demo_72_organizacion" required><option value="">Elija...</option><option value="Inversora IPSFANB">Inversora IPSFANB</option><option value="IPSFANBMIL">IPSFANBMIL</option><option value="IPSFANB">IPSFANB</option></select></div>
-            <div class="pregunta-abierta"><label>73. Indique el nivel organizacional de su puesto en la organización:[cite: 5]</label><select name="demo_73" required><option value="">Elija...</option><option value="Directivo">Directivo</option><option value="Gerencial">Gerencial / Jefatura</option><option value="Operativo">Operativo / Analista</option></select></div>
-            <div class="pregunta-abierta"><label>74. Indique a qué Dirección o Gerencia pertenece:[cite: 5]</label><select name="demo_74" required><option value="">Elija...</option><option value="Operaciones">Operaciones</option><option value="Comercial">Comercial</option><option value="Administracion">Administración y Finanzas</option><option value="RRHH">Recursos Humanos</option><option value="Tecnologia">Tecnología</option></select></div>
-            <div class="pregunta-abierta"><label>75. Indique el tiempo que usted lleva en la organización:[cite: 5]</label><select name="demo_75" required><option value="">Elija...</option><option value="Menos de 1 año">Menos de 1 año</option><option value="1 a 3 años">1 a 3 años</option><option value="3 a 5 años">3 a 5 años</option><option value="Más de 5 años">Más de 5 años</option></select></div>
-            <div class="pregunta-abierta"><label>76. Indique su edad actual:[cite: 5]</label><select name="demo_76" required><option value="">Elija...</option><option value="18-25">18 a 25 años</option><option value="26-35">26 a 35 años</option><option value="36-45">36 a 45 años</option><option value="46-55">46 a 55 años</option><option value="56+">56 años o más</option></select></div>
-            <div class="pregunta-abierta"><label>77. Indique en qué país se encuentra usted:[cite: 5]</label><input type="text" name="demo_77" required></div>
-            <div class="pregunta-abierta"><label>78. Indique en qué localidad se encuentra usted:[cite: 5]</label><input type="text" name="demo_78" required></div>
-            <div class="pregunta-abierta"><label>79. Indique su género:[cite: 5]</label><select name="demo_79" required><option value="">Elija...</option><option value="Masculino">Masculino</option><option value="Femenino">Femenino</option><option value="Prefiero no decirlo">Prefiero no decirlo</option></select></div>
-            <div class="pregunta-abierta"><label>80. Indique su nivel máximo de estudios:[cite: 5]</label><select name="demo_80" required><option value="">Elija...</option><option value="Secundaria">Secundaria</option><option value="Técnico">Técnico</option><option value="Universitario">Universitario</option><option value="Postgrado">Postgrado / Maestría</option></select></div>
+            <div class="pregunta-abierta">
+                <label>72. Indique la organización a la que pertenece:</label>
+                <select name="demo_72_organizacion" required>
+                    <option value="">Elija...</option>
+                    <option value="Inversora IPSFANB">Inversora IPSFANB</option>
+                    <option value="IPSFANBMIL">IPSFANBMIL</option>
+                    <option value="IPSFA">IPSFA</option>
+                </select>
+            </div>
+
+            <div class="pregunta-abierta">
+                <label>73. Indique el nivel organizacional de su puesto en la organización:</label>
+                <select name="demo_73" required>
+                    <option value="">Elija...</option>
+                    <option value="Directivo">Directivo</option>
+                    <option value="Gerencial">Gerencial / Jefatura</option>
+                    <option value="Operativo">Operativo / Analista</option>
+                </select>
+            </div>
+
+            <div class="pregunta-abierta">
+                <label>74. Indique a qué Dirección o Gerencia pertenece:</label>
+                <select name="demo_74" required>
+                    <option value="">Elija...</option>
+                    <option value="Operaciones">Operaciones</option>
+                    <option value="Comercial">Comercial</option>
+                    <option value="Administracion">Administración y Finanzas</option>
+                    <option value="RRHH">Recursos Humanos</option>
+                    <option value="Tecnologia">Tecnología</option>
+                </select>
+            </div>
+
+            <div class="pregunta-abierta">
+                <label>75. Indique el tiempo que usted lleva en la organización:</label>
+                <select name="demo_75" required>
+                    <option value="">Elija...</option>
+                    <option value="Menos de 1 año">Menos de 1 año</option>
+                    <option value="1 a 3 años">1 a 3 años</option>
+                    <option value="3 a 5 años">3 a 5 años</option>
+                    <option value="Más de 5 años">Más de 5 años</option>
+                </select>
+            </div>
+
+            <div class="pregunta-abierta">
+                <label>76. Indique su edad actual:</label>
+                <select name="demo_76" required>
+                    <option value="">Elija...</option>
+                    <option value="18-25">18 a 25 años</option>
+                    <option value="26-35">26 a 35 años</option>
+                    <option value="36-45">36 a 45 años</option>
+                    <option value="46-55">46 a 55 años</option>
+                    <option value="56+">56 años o más</option>
+                </select>
+            </div>
+
+            <div class="pregunta-abierta">
+                <label>77. Indique en qué país se encuentra usted:</label>
+                <input type="text" name="demo_77" value="Venezuela" class="readonly-field" readonly required>
+            </div>
+
+            <div class="pregunta-abierta">
+                <label>78. Indique el estado en el que se encuentra usted:</label>
+                <select name="demo_78_estado" required>
+                    <option value="">Elija un estado...</option>
+                    <option value="Amazonas">Amazonas</option>
+                    <option value="Anzoátegui">Anzoátegui</option>
+                    <option value="Apure">Apure</option>
+                    <option value="Aragua">Aragua</option>
+                    <option value="Barinas">Barinas</option>
+                    <option value="Bolívar">Bolívar</option>
+                    <option value="Carabobo">Carabobo</option>
+                    <option value="Cojedes">Cojedes</option>
+                    <option value="Delta Amacuro">Delta Amacuro</option>
+                    <option value="Distrito Capital">Distrito Capital</option>
+                    <option value="Falcón">Falcón</option>
+                    <option value="Guárico">Guárico</option>
+                    <option value="La Guaira">La Guaira</option>
+                    <option value="Lara">Lara</option>
+                    <option value="Mérida">Mérida</option>
+                    <option value="Miranda">Miranda</option>
+                    <option value="Monagas">Monagas</option>
+                    <option value="Nueva Esparta">Nueva Esparta</option>
+                    <option value="Portuguesa">Portuguesa</option>
+                    <option value="Sucre">Sucre</option>
+                    <option value="Táchira">Táchira</option>
+                    <option value="Trujillo">Trujillo</option>
+                    <option value="Yaracuy">Yaracuy</option>
+                    <option value="Zulia">Zulia</option>
+                </select>
+            </div>
+
+            <div class="pregunta-abierta">
+                <label>79. Indique su género:</label>
+                <select name="demo_79" required>
+                    <option value="">Elija...</option>
+                    <option value="Masculino">Masculino</option>
+                    <option value="Femenino">Femenino</option>
+                    <option value="Prefiero no decirlo">Prefiero no decirlo</option>
+                </select>
+            </div>
+
+            <div class="pregunta-abierta">
+                <label>80. Indique su nivel máximo de estudios:</label>
+                <select name="demo_80" required>
+                    <option value="">Elija...</option>
+                    <option value="Secundaria">Secundaria</option>
+                    <option value="Técnico">Técnico</option>
+                    <option value="Universitario">Universitario</option>
+                    <option value="Postgrado">Postgrado / Maestría</option>
+                </select>
+            </div>
             
             <div class="nav-buttons">
                 <button type="button" class="btn-atras" onclick="prevPage()">← Anterior</button>
@@ -176,78 +295,77 @@
 </div>
 
 <script>
-    // ARREGLO COMPLETO DE PREGUNTAS (1 A 68 SIN DUPLICADOS)
     const secciones = [
         {
             titulo: "I. Involucramiento y Trabajo en Equipo",
             descripcion: "Participación y delegación de autoridad (Cultura organizacional).",
             preguntas: [
-                "1. Las decisiones se toman en el nivel que cuenta con la información más adecuada.[cite: 5]",
-                "2. La información se comparte ampliamente para que esté disponible para todos cuando la necesiten.[cite: 5]",
-                "3. Todos piensan que pueden producir un impacto positivo.[cite: 5]",
-                "4. La planificación empresarial es un proceso continuo que involucra a todos en cierto grado.[cite: 5]",
-                "5. Se alienta activamente la cooperación de todos en los diferentes niveles de la organización.[cite: 5]",
-                "6. Las personas trabajan en equipo.[cite: 5]",
-                "7. Las tareas se realizan gracias al trabajo en equipo, más que a la jerarquía.[cite: 5]",
-                "8. El trabajo se organiza de forma que cada persona pueda ver la relación que existe entre sus funciones individuales y las metas de la organización.[cite: 5]",
-                "9. La autoridad se delega para que las personas puedan actuar con autonomía.[cite: 5]",
-                "10. La 'banca de talento' (capacidad de la gente) está mejorando constantemente.[cite: 5]",
-                "11. Se invierte continuamente para mejorar las competencias y habilidades de los trabajadores.[cite: 5]",
-                "12. Las capacidades de las personas se consideran una fuente importante de ventajas competitivas.[cite: 5]"
+                "1. Las decisiones se toman en el nivel que cuenta con la información más adecuada.",
+                "2. La información se comparte ampliamente para que esté disponible para todos cuando la necesiten.",
+                "3. Todos piensan que pueden producir un impacto positivo.",
+                "4. La planificación empresarial es un proceso continuo que involucra a todos en cierto grado.",
+                "5. Se alienta activamente la cooperación de todos en los diferentes niveles de la organización.",
+                "6. Las personas trabajan en equipo.",
+                "7. Las tareas se realizan gracias al trabajo en equipo, más que a la jerarquía.",
+                "8. El trabajo se organiza de forma que cada persona pueda ver la relación que existe entre sus funciones individuales y las metas de la organización.",
+                "9. La autoridad se delega para que las personas puedan actuar con autonomía.",
+                "10. La 'banca de talento' (capacidad de la gente) está mejorando constantemente.",
+                "11. Se invierte continuamente para mejorar las competencias y habilidades de los trabajadores.",
+                "12. Las capacidades de las personas se consideran una fuente importante de ventajas competitivas."
             ]
         },
         {
             titulo: "II. Consistencia y Valores Core",
             descripcion: "Sistemas, estructuras y alineación de valores.",
             preguntas: [
-                "13. Los líderes y gerentes hacen lo que dicen.[cite: 5]",
-                "14. Existe un conjunto de valores claros y consistentes que gobiernan nuestras prácticas empresariales.[cite: 5]",
-                "15. Cuando las personas ignoran los valores básicos, se les exige asumir la responsabilidad.[cite: 5]",
-                "16. Existe un código de ética que guía nuestro comportamiento y nos indica lo que debemos y no debemos hacer.[cite: 5]",
-                "17. Cuando hay desacuerdos, trabajamos con dedicación para lograr soluciones gana-gana de beneficio mutuo.[cite: 5]",
-                "18. Hay una cultura definida con claridad.[cite: 5]",
-                "19. Es fácil obtener consenso, incluso con problemas difíciles de solucionar.[cite: 5]",
-                "20. Existen acuerdos claros sobre la forma correcta e incorrecta de hacer las cosas.[cite: 5]",
-                "21. Nuestra forma de hacer negocios es muy consistente y predecible.[cite: 5]",
-                "22. Las personas que están en diferentes partes de la organización comparten una perspectiva común.[cite: 5]",
-                "23. Es fácil coordinar proyectos entre las diferentes partes de la organización.[cite: 5]",
-                "24. Hay una buena alineación de las metas a través de todos los niveles.[cite: 5]"
+                "13. Los líderes y gerentes hacen lo que dicen.",
+                "14. Existe un conjunto de valores claros y consistentes que gobiernan nuestras prácticas empresariales.",
+                "15. Cuando las personas ignoran los valores básicos, se les exige asumir la responsabilidad.",
+                "16. Existe un código de ética que guía nuestro comportamiento y nos indica lo que debemos y no debemos hacer.",
+                "17. Cuando hay desacuerdos, trabajamos con dedicación para lograr soluciones gana-gana de beneficio mutuo.",
+                "18. Hay una cultura definida con claridad.",
+                "19. Es fácil obtener consenso, incluso con problemas difíciles de solucionar.",
+                "20. Existen acuerdos claros sobre la forma correcta e incorrecta de hacer las cosas.",
+                "21. Nuestra forma de hacer negocios es muy consistente y predecible.",
+                "22. Las personas que están en diferentes partes de la organización comparten una perspectiva común.",
+                "23. Es fácil coordinar proyectos entre las diferentes partes de la organización.",
+                "24. Hay una buena alineación de las metas a través de todos los niveles."
             ]
         },
         {
             titulo: "III. Adaptabilidad y Enfoque en el Cliente",
             descripcion: "Capacidad de cambio y orientación externa.",
             preguntas: [
-                "25. La forma de hacer las cosas es muy flexible y se puede cambiar fácilmente.[cite: 5]",
-                "26. Respondemos bien a la competencia y a otros cambios en el entorno comercial.[cite: 5]",
-                "27. Continuamente se adoptan nuevas y mejores maneras de realizar el trabajo.[cite: 5]",
-                "28. Las diferentes partes de la organización generalmente cooperan entre sí para realizar cambios.[cite: 5]",
-                "29. Los comentarios y recomendaciones de los clientes con frecuencia generan cambios.[cite: 5]",
-                "30. Las sugerencias de los clientes influencian nuestras decisiones.[cite: 5]",
-                "31. Todos los miembros comprenden a fondo los deseos y las necesidades de los clientes.[cite: 5]",
-                "32. Alentamos el contacto directo entre nuestra gente y los clientes.[cite: 5]",
-                "33. Vemos nuestras fallas como una oportunidad para aprender y mejorar.[cite: 5]",
-                "34. Se alienta y recompensa el innovar y tomar riesgos.[cite: 5]",
-                "35. El aprendizaje es un objetivo importante en nuestras labores cotidianas.[cite: 5]",
-                "36. Nos aseguramos de que todos estén informados sobre lo que está sucediendo.[cite: 5]"
+                "25. La forma de hacer las cosas es muy flexible y se puede cambiar fácilmente.",
+                "26. Respondemos bien a la competencia y a otros cambios en el entorno comercial.",
+                "27. Continuamente se adoptan nuevas y mejores maneras de realizar el trabajo.",
+                "28. Las diferentes partes de la organización generalmente cooperan entre sí para realizar cambios.",
+                "29. Los comentarios y recomendaciones de los clientes con frecuencia generan cambios.",
+                "30. Las sugerencias de los clientes influencian nuestras decisiones.",
+                "31. Todos los miembros comprenden a fondo los deseos y las necesidades de los clientes.",
+                "32. Alentamos el contacto directo entre nuestra gente y los clientes.",
+                "33. Vemos nuestras fallas como una oportunidad para aprender y mejorar.",
+                "34. Se alienta y recompensa el innovar y tomar riesgos.",
+                "35. El aprendizaje es un objetivo importante en nuestras labores cotidianas.",
+                "36. Nos aseguramos de que todos estén informados sobre lo que está sucediendo."
             ]
         },
         {
             titulo: "IV. Misión y Dirección Estratégica",
             descripcion: "Objetivos a largo plazo y estrategia empresarial.",
             preguntas: [
-                "37. Existe una dirección y un propósito a largo plazo.[cite: 5]",
-                "38. Nuestra estrategia hace que otras organizaciones cambien su forma de competir en la industria.[cite: 5]",
-                "39. Existe una misión clara que le da significado y dirección a nuestro trabajo.[cite: 5]",
-                "40. Existe una clara estrategia para el futuro.[cite: 5]",
-                "41. Existe un acuerdo generalizado sobre nuestras metas.[cite: 5]",
-                "42. Nuestros líderes fijan metas ambiciosas, pero realistas.[cite: 5]",
-                "43. Los directivos han informado con claridad los objetivos que intentamos alcanzar.[cite: 5]",
-                "44. Continuamente hacemos seguimiento a nuestro progreso, frente a las metas establecidas.[cite: 5]",
-                "45. Compartimos una visión común acerca de cómo será la organización en el futuro.[cite: 5]",
-                "46. Nuestros líderes tienen una visión a largo plazo.[cite: 5]",
-                "47. Nuestra visión estimula y motiva a nuestros empleados.[cite: 5]",
-                "48. Podemos cumplir con las exigencias de corto plazo sin comprometer nuestra visión de largo plazo.[cite: 5]"
+                "37. Existe una dirección y un propósito a largo plazo.",
+                "38. Nuestra estrategia hace que otras organizaciones cambien su forma de competir en la industria.",
+                "39. Existe una misión clara que le da significado y dirección a nuestro trabajo.",
+                "40. Existe una clara estrategia para el futuro.",
+                "41. Existe un acuerdo generalizado sobre nuestras metas.",
+                "42. Nuestros líderes fijan metas ambiciosas, pero realistas.",
+                "43. Los directivos han informado con claridad los objetivos que intentamos alcanzar.",
+                "44. Continuamente hacemos seguimiento a nuestro progreso, frente a las metas establecidas.",
+                "45. Compartimos una visión común acerca de cómo será la organización en el futuro.",
+                "46. Nuestros líderes tienen una visión a largo plazo.",
+                "47. Nuestra visión estimula y motiva a nuestros empleados.",
+                "48. Podemos cumplir con las exigencias de corto plazo sin comprometer nuestra visión de largo plazo."
             ]
         },
         {
@@ -311,9 +429,8 @@
         { valor: "NA", num: "N/A", texto: "No Aplica" }
     ];
 
-    // INYECCIÓN DINÁMICA DE PREGUNTAS
     const dynamicContainer = document.getElementById('dynamic-pages');
-    let pagesIds = ['page-0', 'page-1']; // Bienvenida e Instrucciones
+    let pagesIds = ['page-0', 'page-1']; 
 
     secciones.forEach((seccion, index) => {
         let pageId = `page-sec-${index}`;
@@ -370,11 +487,9 @@
         dynamicContainer.appendChild(divPage);
     });
 
-    // Agregar las páginas finales al flujo
     pagesIds.push('page-open-questions', 'page-demographics');
     let currentPageIndex = 0;
 
-    // CONTROL DE NAVEGACIÓN Y BARRA DE PROGRESO
     function updateProgress() {
         const totalPages = pagesIds.length;
         const progressPercentage = (currentPageIndex / (totalPages - 1)) * 100;
@@ -394,7 +509,6 @@
         updateProgress();
     }
 
-    // VALIDACIÓN DE FORMULARIOS
     function validarPaginaActual() {
         const currentPageEl = document.getElementById(pagesIds[currentPageIndex]);
         let allValid = true;
@@ -402,7 +516,6 @@
         const errorMsg = currentPageEl.querySelector('.error-mensaje');
         if(errorMsg) errorMsg.style.display = 'none';
 
-        // Validar textos y selects
         const textInputs = currentPageEl.querySelectorAll('input[type="text"][required], textarea[required], select[required]');
         textInputs.forEach(input => {
             if (!input.value.trim()) {
@@ -413,7 +526,6 @@
             }
         });
 
-        // Validar escalas (Radio buttons)
         const radioInputs = currentPageEl.querySelectorAll('input[type="radio"][required]');
         const uniqueRadioNames = [...new Set(Array.from(radioInputs).map(r => r.name))];
         
@@ -440,7 +552,7 @@
     }
 
     function nextPage() {
-        if (currentPageIndex > 1) { // No validar bienvenida ni instrucciones
+        if (currentPageIndex > 1) { 
             if (!validarPaginaActual()) return; 
         }
         if (currentPageIndex < pagesIds.length - 1) {
@@ -456,7 +568,6 @@
         }
     }
 
-    // ESTILOS DINÁMICOS AL SELECCIONAR OPCIONES
     document.addEventListener('change', function(e) {
         if (e.target.type === 'radio') {
             const name = e.target.name;
@@ -473,31 +584,23 @@
         }
     });
 
-    // EVENTO FINAL DE ENVÍO SEGURO A SUPABASE
     document.getElementById('encuestaForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         
         if (!validarPaginaActual()) return; 
 
-        // Mostrar estado de carga
         const btnEnviar = document.querySelector('.btn-enviar');
         const textoOriginal = btnEnviar.textContent;
         btnEnviar.textContent = "Enviando...";
         btnEnviar.disabled = true;
 
-        // Recopilar datos
         const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
 
-        // =========================================================
-        // CONFIGURACIÓN DE SUPABASE 
-        // ¡REEMPLAZA ESTOS VALORES POR LOS DE TU PROYECTO!
-        // =========================================================
         const SUPABASE_URL = 'https://ayyklaggekblcmmwkqrj.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_KysVRD3rem-ihrpAXoHuWQ_AJcbveEq';
 
         try {
-            // Enviar datos a Supabase (Tabla 'resultados_encuesta')
             const response = await fetch(`${SUPABASE_URL}/rest/v1/resultados_encuesta`, {
                 method: 'POST',
                 headers: {
@@ -511,7 +614,6 @@
 
             if (!response.ok) throw new Error('Error al enviar los datos');
 
-            // Mostrar pantalla de éxito
             document.querySelectorAll('.page').forEach(el => el.classList.remove('active'));
             document.getElementById('progressBar').style.display = 'none';
             document.getElementById('page-success').classList.add('active');
@@ -519,13 +621,12 @@
 
         } catch (error) {
             console.error("Error:", error);
-            alert("Hubo un problema de conexión al enviar la encuesta. Por favor, intente nuevamente.");
+            alert("Hubo un problema de conexión al enviar la encuesta. Verifica tu conexión e intenta nuevamente.");
             btnEnviar.textContent = textoOriginal;
             btnEnviar.disabled = false;
         }
     });
 
-    // Inicializar interfaz
     updateProgress();
 </script>
 
