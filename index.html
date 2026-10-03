@@ -54,7 +54,7 @@
         .progress-bar { width: 100%; background-color: #e0e0e0; height: 10px; border-radius: 5px; margin-bottom: 20px; overflow: hidden; }
         .progress-fill { height: 100%; background-color: #428b55; width: 0%; transition: width 0.3s ease; }
 
-        /* Campo solo lectura (como Venezuela) */
+        /* Campo solo lectura */
         .readonly-field { background-color: #e9ecef; color: #666; cursor: not-allowed; }
 
         @media (max-width: 768px) {
@@ -218,13 +218,11 @@
 
             <div class="pregunta-abierta">
                 <label>77. Indique en qué país se encuentra usted:</label>
-                <!-- Campo de texto configurado para que por defecto sea Venezuela y no se pueda editar (readonly) -->
                 <input type="text" name="demo_77" value="Venezuela" class="readonly-field" readonly required>
             </div>
 
             <div class="pregunta-abierta">
                 <label>78. Indique el estado en el que se encuentra usted:</label>
-                <!-- Lista completa de Estados de Venezuela -->
                 <select name="demo_78_estado" required>
                     <option value="">Elija un estado...</option>
                     <option value="Amazonas">Amazonas</option>
@@ -598,9 +596,9 @@
         const data = Object.fromEntries(formData.entries());
 
         // =========================================================================================
-        // 👇👇 REEMPLAZA ESTAS LÍNEAS CON TU URL Y TU CLAVE ANÓNIMA DE SUPABASE 👇👇
+        // APLICANDO LAS CREDENCIALES EXACTAS PROPORCIONADAS
         // =========================================================================================
-        const SUPABASE_URL = 'https://ayyklaggekblcmmwkqrj.supabase.co/rest/v1/';
+        const SUPABASE_URL = 'https://ayyklaggekblcmmwkqrj.supabase.co';
         const SUPABASE_ANON_KEY = 'sb_publishable_KysVRD3rem-ihrpAXoHuWQ_AJcbveEq';
         // =========================================================================================
 
@@ -625,7 +623,7 @@
 
         } catch (error) {
             console.error("Error:", error);
-            alert("Hubo un problema de conexión al enviar la encuesta. Verifica que hayas configurado correctamente la URL y la Clave de Supabase en el código y vuelve a intentarlo.");
+            alert("Hubo un problema de conexión al enviar la encuesta. Verifica tu conexión de red e intenta nuevamente.");
             btnEnviar.textContent = textoOriginal;
             btnEnviar.disabled = false;
         }
